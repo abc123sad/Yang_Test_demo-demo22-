@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>士兵编号</th>
+        <th>士兵姓名</th>
+        <th>士兵武器</th>
+        <th>删除</th>
+        <th>编辑</th>
+    </tr>
+    <tr th:each="item,status : ${soldierList}">
+        <td th:text="${item.soldierId}"></td>
+        <td th:text="${item.soldierName}"></td>
+        <td th:text="${item.soldierWeapon}"></td>
+        <td><a th:href="@{soldier(method='deleteSoldiers',soldierId = ${item.soldierId})}">删除</a></td>
+        <td><a th:href="@{soldier(method='updateSoldiers',id = ${item.soldierId},name = ${item.soldierName},weapon = ${item.soldierWeapon})}">编辑</a></td>
+    </tr>
+</table>
+<form action="/demo22/soldier?method=addSoldiers" method="post">
+    士兵姓名：<input type="text" name="username">
+    士兵武器：<input type="text" name="username1">
+    <input type="submit" value="添加">
+</form>
+</body>
+</html>
